@@ -412,3 +412,15 @@ test('Neg_Fun_0010 - Excessively long gibberish input', async ({ page }) => {
   await expect(outputBox).toHaveText('');
 });
 
+test('Pos_UI_0001 - Real-time Tamil output update', async ({ page }) => {
+  await page.goto('https://tamil.changathi.com/');
+
+  const inputBox = page.locator('#transliterateTextarea');
+  const outputBox = page.locator('#transliterateTextarea');
+
+  await inputBox.fill('naan veetukku poren');
+
+  await expect(outputBox).toBeVisible();
+  await expect(outputBox).toHaveText('');
+});
+
